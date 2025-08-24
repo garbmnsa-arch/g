@@ -92,8 +92,7 @@ export default function TeacherClassesPage({ onLogout }: TeacherClassesPageProps
 
   const classes: ClassCircle[] = [
     { id: 1, name: "حلقة النور", studentCount: 7, presentCount: 5, absentCount: 2 },
-    { id: 2, name: "حلقة الهدى", studentCount: 8, presentCount: 6, absentCount: 2 },
-    { id: 3, name: "حلقة البركة", studentCount: 6, presentCount: 4, absentCount: 2 }
+    { id: 2, name: "حلقة الهدى", studentCount: 8, presentCount: 6, absentCount: 2 }
   ];
 
   const { toast } = useToast();

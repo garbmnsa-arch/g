@@ -92,11 +92,10 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
         <Moon className="h-4 w-4 text-foreground" />
       </div>
 
-      {/* نص إدارة الإشراف في الأعلى اليمين */}
+      {/* نص إطلاق تجريبي في الأعلى اليمين */}
       <div className="absolute top-4 right-6">
         <div className="p-3 bg-secondary/30 rounded-lg border border-border/30" dir="rtl">
           <div className="text-right">
-            <h1 className="text-base font-bold text-primary mb-1">إدارة الإشراف النسائي بالدمام</h1>
             <div className="flex items-center justify-start gap-2 text-xs font-medium text-accent">
               <span>🚀</span>
               <span>إطلاق تجريبي</span>
@@ -105,7 +104,10 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
         </div>
       </div>
 
-      <Card className="w-full max-w-md mx-4 sm:mx-0 bg-card border-2 border-border/50 shadow-sm">
+      <Card className="w-full max-w-md mx-4 sm:mx-0 bg-card border-2 border-border/50 shadow-sm overflow-hidden">
+        {/* الشريط اللوني العلوي */}
+        <div className="h-2 bg-secondary/30"></div>
+        
         <CardHeader className="text-center pb-4 sm:pb-6 px-4 sm:px-6">
           <div className="flex justify-center mb-4 sm:mb-6">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary rounded-2xl flex items-center justify-center shadow-sm">
@@ -194,24 +196,15 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
             </Button>
           </form>
 
-          {/* معلومات تسجيل الدخول */}
+          {/* معلومات الإدارة */}
           <div className="mt-6 p-4 bg-secondary/30 rounded-xl border border-border/30">
-            <p className="text-xs text-muted-foreground text-center mb-2">
-              بيانات تجريبية للتجربة:
+            <p className="text-sm text-foreground text-center font-semibold">
+              إدارة الإشراف النسائي بالدمام
             </p>
-            <div className="text-xs text-center space-y-1 text-muted-foreground">
-              <div>البريد: admin@example.com</div>
-              <div>كلمة المرور: 123456</div>
-            </div>
           </div>
         </CardContent>
 
         <CardFooter className="flex flex-col items-center space-y-4 text-center">
-          <div className="text-center text-xs text-muted-foreground">
-            © إدارة الإشراف النسائي بالدمام
-            <br/>
-            <span className="text-xs">منذ 1388 هـ</span>
-          </div>
         </CardFooter>
       </Card>
     </div>
