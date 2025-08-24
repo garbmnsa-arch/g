@@ -1,0 +1,171 @@
+@import "@fontsource/ibm-plex-sans-arabic/400.css";
+@import "@fontsource/ibm-plex-sans-arabic/500.css";
+@import "@fontsource/ibm-plex-sans-arabic/600.css";
+@import "@fontsource/ibm-plex-sans-arabic/700.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ألوان الهوية - Light Mode */
+    --background: 0 0% 100%;                    /* أبيض نقي */
+    --foreground: 225 35% 26%;                  /* #3B4664 - الأزرق الداكن الأساسي */
+    --card: 0 0% 100%;                         /* أبيض للكروت */
+    --card-foreground: 225 35% 26%;            /* #3B4664 للنصوص */
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 35% 26%;
+    --primary: 225 35% 26%;                    /* #3B4664 - اللون الأساسي */
+    --primary-foreground: 0 0% 100%;           /* أبيض للنصوص على الأساسي */
+    --secondary: 19 44% 85%;                   /* #EBBEB9 - الوردي الفاتح */
+    --secondary-foreground: 225 35% 26%;       /* الأزرق الداكن للنصوص */
+    --muted: 0 0% 95%;                         /* #f2f2f2 - رمادي فاتح جداً */
+    --muted-foreground: 225 20% 50%;           /* رمادي متوسط */
+    --accent: 242 51% 30%;                     /* #323366 - البنفسجي الداكن */
+    --accent-foreground: 0 0% 100%;            /* أبيض */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;                        /* حدود رمادية فاتحة */
+    --input: 0 0% 96%;                         /* خلفية inputs فاتحة */
+    --ring: 225 35% 26%;                       /* #3B4664 للتركيز */
+    --radius: 8px;                             /* حواف مدورة أكثر */
+  }
+
+  .dark {
+    /* ألوان الهوية - Dark Mode */
+    --background: 225 35% 15%;                 /* خلفية داكنة من اللون الأساسي */
+    --foreground: 0 0% 95%;                    /* أبيض فاتح */
+    --card: 225 35% 18%;                       /* كروت أفتح قليلاً */
+    --card-foreground: 0 0% 95%;
+    --popover: 225 35% 18%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 19 44% 85%;                     /* #EBBEB9 - الوردي كلون أساسي في الداكن */
+    --primary-foreground: 225 35% 26%;         /* #3B4664 للنصوص */
+    --secondary: 242 51% 30%;                  /* #323366 - البنفسجي */
+    --secondary-foreground: 0 0% 95%;
+    --muted: 225 20% 25%;                      /* رمادي داكن */
+    --muted-foreground: 0 0% 70%;              /* رمادي فاتح للنصوص الثانوية */
+    --accent: 19 44% 85%;                      /* الوردي الفاتح كلون مميز */
+    --accent-foreground: 225 35% 26%;          /* الأزرق الداكن */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 225 20% 30%;                     /* حدود داكنة */
+    --input: 225 20% 25%;                      /* inputs داكنة */
+    --ring: 19 44% 85%;                        /* الوردي للتركيز في الوضع الداكن */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'IBM Plex Sans Arabic', 'Cairo', sans-serif;
+    direction: rtl;
+  }
+}
+
+/* تحسينات للتصميم الفلات البسيط */
+.flat-card {
+  border: 2px solid hsl(var(--border));
+  box-shadow: none;
+  border-radius: 12px;
+}
+
+.flat-button {
+  border-radius: 12px;
+  border: none;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.flat-input {
+  border: 2px solid hsl(var(--border));
+  border-radius: 12px;
+  background: hsl(var(--background));
+  transition: border-color 0.2s ease;
+}
+
+.flat-input:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: none;
+}
+
+/* تنسيق شريط التمرير المخصص */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.3) hsl(var(--muted));
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 10px;
+  margin: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.4);
+  border-radius: 10px;
+  border: 1px solid hsl(var(--muted));
+  transition: all 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.6);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: hsl(var(--primary) / 0.8);
+}
+
+/* شريط التمرير في الوضع الداكن */
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: hsl(var(--muted) / 0.5);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent) / 0.5);
+  border: 1px solid hsl(var(--muted) / 0.3);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent) / 0.7);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: hsl(var(--accent) / 0.9);
+}
+
+/* تحريكات بسيطة للصفحة الرئيسية */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDelay {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-fade-in-delay {
+  animation: fadeInDelay 0.8s ease-out 0.2s both;
+}
+
+.animate-pulse-soft {
+  animation: pulseSoft 3s ease-in-out infinite;
+}
