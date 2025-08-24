@@ -201,13 +201,6 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
         </CardContent>
 
         <CardFooter className="flex flex-col items-center space-y-4 text-center">
-          <div className="flex flex-wrap justify-center gap-2">
-            <Badge variant="secondary" className="text-xs">React 18</Badge>
-            <Badge variant="secondary" className="text-xs">TypeScript</Badge>
-            <Badge variant="outline" className="text-xs">Tailwind CSS</Badge>
-            <Badge variant="outline" className="text-xs">shadcn/ui</Badge>
-          </div>
-          
           <div className="text-center text-xs text-muted-foreground">
             © إدارة الإشراف النسائي بالدمام
             <br/>

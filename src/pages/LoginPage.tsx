@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Eye, EyeOff, LogIn, Moon, Sun, Users } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -71,7 +70,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('darkMode', 'true');
@@ -106,22 +105,22 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
         </div>
       </div>
 
-      <Card className="w-full max-w-md bg-card border-2 border-border/50 shadow-sm">
-        <CardHeader className="text-center pb-6">
-          <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-sm">
-              <Users className="w-10 h-10 text-primary-foreground" />
+      <Card className="w-full max-w-md mx-4 sm:mx-0 bg-card border-2 border-border/50 shadow-sm">
+        <CardHeader className="text-center pb-4 sm:pb-6 px-4 sm:px-6">
+          <div className="flex justify-center mb-4 sm:mb-6">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-primary rounded-2xl flex items-center justify-center shadow-sm">
+              <Users className="w-8 h-8 sm:w-10 sm:h-10 text-primary-foreground" />
             </div>
           </div>
-          <CardTitle className="text-3xl font-bold mb-3 text-foreground">
+          <CardTitle className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-3 text-foreground">
             تسجيل الدخول
           </CardTitle>
-          <CardDescription className="text-base text-muted-foreground">
+          <CardDescription className="text-sm sm:text-base text-muted-foreground">
             مرحباً بك في منصة غرب لإدارة حلقات القرآن الكريم
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-4 sm:space-y-6 px-4 sm:px-6">
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
             <div className="space-y-2">
               <Label 
@@ -208,13 +207,6 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
         </CardContent>
 
         <CardFooter className="flex flex-col items-center space-y-4 text-center">
-          <div className="flex flex-wrap justify-center gap-2">
-            <Badge variant="secondary" className="text-xs">React 18</Badge>
-            <Badge variant="secondary" className="text-xs">TypeScript</Badge>
-            <Badge variant="outline" className="text-xs">Tailwind CSS</Badge>
-            <Badge variant="outline" className="text-xs">shadcn/ui</Badge>
-          </div>
-          
           <div className="text-center text-xs text-muted-foreground">
             © إدارة الإشراف النسائي بالدمام
             <br/>
