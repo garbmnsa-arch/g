@@ -129,12 +129,12 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
                 htmlFor="email" 
                 className="text-right block font-medium text-foreground"
               >
-                البريد الإلكتروني
+                رقم الهوية
               </Label>
               <Input
                 id="email"
-                type="email"
-                placeholder="أدخل بريدك الإلكتروني"
+                type="text"
+                placeholder="أدخل رقم هويتك"
                 {...form.register('email')}
                 className="text-right h-12 border-2 border-border/50 rounded-xl focus:border-primary"
                 dir="rtl"

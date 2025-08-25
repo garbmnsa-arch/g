@@ -50,11 +50,38 @@ export default {
         "float": "float 6s ease-in-out infinite",
         "gradient": "gradient 15s ease infinite",
         "spin-slow": "spin 20s linear infinite",
+        "toast-in": "toast-slide-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+        "toast-out": "toast-slide-out 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53)",
+        "bounce-gentle": "bounce-gentle 0.6s ease-out",
       },
       keyframes: {
         spin: {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(360deg)" },
+        },
+        "toast-slide-in": {
+          "0%": { 
+            transform: "translateY(100%) scale(0.95)", 
+            opacity: "0" 
+          },
+          "100%": { 
+            transform: "translateY(0) scale(1)", 
+            opacity: "1" 
+          },
+        },
+        "toast-slide-out": {
+          "0%": { 
+            transform: "translateY(0) scale(1)", 
+            opacity: "1" 
+          },
+          "100%": { 
+            transform: "translateY(100%) scale(0.95)", 
+            opacity: "0" 
+          },
+        },
+        "bounce-gentle": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
         },
       },
     },
