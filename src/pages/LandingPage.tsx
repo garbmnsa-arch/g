@@ -46,6 +46,18 @@ export default function LandingPage({ onLogin, onRegister, onServices }: Landing
 
   return (
     <div className="min-h-screen bg-background flex flex-col relative">
+      {/* نص إدارة الإشراف في الأعلى اليمين */}
+      <div className="absolute top-4 right-6 z-10">
+        <div className="p-3 bg-secondary/30 rounded-lg border border-border/30" dir="rtl">
+          <div className="text-right">
+            <h1 className="text-base font-bold text-primary mb-1">إدارة الإشراف النسائي بالدمام</h1>
+            <div className="flex items-center justify-start gap-2 text-xs font-medium text-accent">
+              <span>🚀</span>
+              <span>إطلاق تجريبي</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* المحتوى الرئيسي */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 -mt-16">
