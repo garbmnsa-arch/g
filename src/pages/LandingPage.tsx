@@ -11,6 +11,11 @@ import {
   Settings
 } from "lucide-react";
 
+// استيراد الصور
+import logoWhite from '../assets/شعار_إشراف الدمام بالطول أبيض.png';
+import logoBlack from '../assets/شعار_إشراف الدمام بالطول.png';
+import decorationImg from '../assets/تصميم بدون عنوان (25).png';
+
 interface LandingPageProps {
   onLogin: () => void;
   onRegister: () => void;
@@ -50,7 +55,7 @@ export default function LandingPage({ onLogin, onRegister, onServices }: Landing
       <div className="absolute top-4 right-6 z-10">
         <div className="p-3 bg-secondary/30 rounded-lg border border-border/30" dir="rtl">
           <div className="text-right">
-            <h1 className="text-base font-bold text-primary mb-1">إدارة الإشراف النسائي بالدمام</h1>
+            <h1 className="text-base font-bold text-primary mb-1">فرع غرب الدمام</h1>
             <div className="flex items-center justify-start gap-2 text-xs font-medium text-accent">
               <span>🚀</span>
               <span>إطلاق تجريبي</span>
@@ -68,13 +73,13 @@ export default function LandingPage({ onLogin, onRegister, onServices }: Landing
             <div className="flex justify-center mb-8">
               {darkMode ? (
                 <img 
-                  src="/images/شعار_إشراف الدمام بالطول أبيض.png" 
+                  src={logoWhite} 
                   alt="شعار إشراف الدمام" 
                   className="h-48 md:h-56 lg:h-64 w-auto max-w-full object-contain"
                 />
               ) : (
                 <img 
-                  src="/images/شعار_إشراف الدمام بالطول.png" 
+                  src={logoBlack} 
                   alt="شعار إشراف الدمام" 
                   className="h-48 md:h-56 lg:h-64 w-auto max-w-full object-contain"
                 />
@@ -136,7 +141,7 @@ export default function LandingPage({ onLogin, onRegister, onServices }: Landing
       <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 pointer-events-none z-0">
         <div className="animate-spin" style={{ animation: 'spin 20s linear infinite' }}>
           <img 
-            src="/images/تصميم بدون عنوان (25).png" 
+            src={decorationImg} 
             alt="زخرفة" 
             className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 opacity-20 dark:opacity-10"
           />

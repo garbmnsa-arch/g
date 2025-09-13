@@ -10,11 +10,13 @@ import { Eye, EyeOff, LogIn, Moon, Sun, Users } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { authApi, ApiError } from "@/lib/api";
+import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 
 // Schema التحقق
 const loginSchema = z.object({
-  email: z.string().email("البريد الإلكتروني غير صحيح"),
+  identity_number: z.string().min(10, "رقم الهوية يجب أن يكون 10 أرقام على الأقل"),
   password: z.string().min(6, "كلمة المرور يجب أن تكون 6 أحرف على الأقل"),
 });
 
@@ -34,11 +36,12 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
   });
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { login } = useAuth();
 
   const form = useForm<LoginForm>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "",
+      identity_number: "",
       password: "",
     },
   });
@@ -48,21 +51,37 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
     setIsLoading(true);
     
     try {
-      // محاكاة API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // استدعاء API تسجيل الدخول الحقيقي
+      const userData = await authApi.teacherLogin({
+        identity_number: data.identity_number,
+        password: data.password,
+      });
+      
+      // حفظ بيانات المستخدم
+      login(userData);
       
       toast({
         title: "تم تسجيل الدخول بنجاح! 🎉",
-        description: "مرحباً بك في إدارة الإشراف النسائي",
+        description: `مرحباً بك ${userData.name}`,
       });
       
+      // التوجه للصفحة الرئيسية
       setTimeout(() => {
         onLogin();
       }, 1000);
+      
     } catch (error) {
+      let errorMessage = "حدث خطأ غير متوقع";
+      
+      if (error instanceof ApiError) {
+        errorMessage = error.message;
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
       toast({
         title: "خطأ في تسجيل الدخول",
-        description: "يرجى التحقق من البيانات والمحاولة مرة أخرى",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {
@@ -126,22 +145,22 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
             <div className="space-y-2">
               <Label 
-                htmlFor="email" 
+                htmlFor="identity_number" 
                 className="text-right block font-medium text-foreground"
               >
                 رقم الهوية
               </Label>
               <Input
-                id="email"
+                id="identity_number"
                 type="text"
                 placeholder="أدخل رقم هويتك"
-                {...form.register('email')}
+                {...form.register('identity_number')}
                 className="text-right h-12 border-2 border-border/50 rounded-xl focus:border-primary"
                 dir="rtl"
               />
-              {form.formState.errors.email && (
+              {form.formState.errors.identity_number && (
                 <p className="text-sm text-destructive text-right">
-                  {form.formState.errors.email.message}
+                  {form.formState.errors.identity_number.message}
                 </p>
               )}
             </div>
@@ -199,7 +218,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
           {/* معلومات الإدارة */}
           <div className="mt-6 p-4 bg-secondary/30 rounded-xl border border-border/30">
             <p className="text-sm text-foreground text-center font-semibold">
-              إدارة الإشراف النسائي بالدمام
+              فرع غرب الدمام
             </p>
           </div>
         </CardContent>
